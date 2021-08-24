@@ -1,9 +1,9 @@
 # *Lifestore* Study case coding solution
 
 ## Run
-'''console
+```console
 python3 -m sales_analysis_system
-'''
+```
 
 ## About the case
 Recently, the virtual store *Lifestore* has noticed an inventory accumulation problem. In addition, it reported a decrement in the sales of the last trimester directly related to a search history diminishment of certain products.

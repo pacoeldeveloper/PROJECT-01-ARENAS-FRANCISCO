@@ -77,7 +77,3 @@ def verify_account_creation(is_created: bool) -> None:
         print("To continue, type 1 or exit with 0: ")
     else:
         print("To use the system create an account. Type 2 to do so or exit with 0:")
-            
-        
-
-    

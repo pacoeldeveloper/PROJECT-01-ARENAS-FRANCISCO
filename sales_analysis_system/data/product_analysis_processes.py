@@ -8,7 +8,7 @@ analysis.
 '''
 
 from datetime import datetime
-from lifestore_file import *
+from sales_analysis_system.data.lifestore_file import *
 from typing import List
 import calendar
 
@@ -160,6 +160,7 @@ def print_products(given_list, analyzed_attribute) -> None:
         Product: {lifestore_products[(product[0] - 1)][1]},
         Price: {lifestore_products[(product[0] - 1)][2]},
         Category: {lifestore_products[(product[0] - 1)][3]},
+        Current stock: {lifestore_products[(product[0] - 1)][4]},
         {analyzed_attribute}: {product[1]}
         """)
 
@@ -169,6 +170,3 @@ def print_time(given_dict, time_attribute, sale_attribute) -> None:
         {time_attribute}: {date},
         {sale_attribute}: {sales}
         ''')
-show_sales_searches_analysis()
-show_reviews_analysis()
-show_income()

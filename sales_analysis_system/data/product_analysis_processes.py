@@ -7,21 +7,22 @@ File with all the needed functions to obtain the required
 analysis.
 '''
 
-from datetime import datetime
+from sales_analysis_system.views.screen_printing import *
 from sales_analysis_system.data.lifestore_file import *
+from datetime import datetime
 from typing import List
 import calendar
 
 def show_sales_searches_analysis() -> None:
     _, worst_sold_products, best_sold_products = get_top_worst_products(1, lifestore_sales)
     _, least_searched_products, most_searched_products = get_top_worst_products(1, lifestore_searches)
-    print("Best sold products (NOTE! The list was clean to present the most relevant data):")
+    print_best_products()
     print_products(get_cleaner_lists(best_sold_products), "Times it was bought")
-    print("Worst sold products:")
+    print_worst_products()
     print_products(worst_sold_products, "Times it was bought")
-    print("Most searched products:")
+    print_most_searched()
     print_products(most_searched_products, "Times it was searched")
-    print("Least searched products:")
+    print_least_searched()
     print_products(least_searched_products, "Times it was searched")
 
 def show_reviews_analysis() -> None:
@@ -29,29 +30,27 @@ def show_reviews_analysis() -> None:
     _, _, worst_sold_products = get_top_worst_products(1, lifestore_sales)
     worst_sold_products_id = sorted(list((product[0] for product in worst_sold_products)))
     
-    print("Best reviewed products:")
+    print_best_reviews()
     print_products(best_reviewed_products, "Times it was refunded")
-    print("Worst reviewed products:")
-    print_products(worst_reviewed_products, "Times it was refunded")
-
+    print_worst_reviews()
     # Clean the the reviews to obtain the elements with most info
     cleaner_worst = get_cleaner_lists(worst_reviewed_products)
-
-    print('Nonetheless, the only products that were refunded are:')
     print_products(cleaner_worst, "Times it was refunded")
+    print_worst_worst()
     print('From this list, the following products were within the worst sold products list:')
     print_products(get_worst_reviwed_in_worst_sold_products(cleaner_worst, 
                                                             worst_sold_products_id), "Times it was refunded")
  
 def show_income() -> None:
     average, worst_months, best_months = get_monthly_sales()
+    print_income_title()
     print(f'The total income aquired is: ${get_total_income()}')
     print(f'With the current sales data, the company is making, in average, approximately {average} sales per month ')
-    print('Each year, the company had the following total number of sales:')
+    print('\nEach year, the company had the following total number of sales:')
     print_time(get_anual_income(), 'Year', 'Sales within that year')
-    print('Furthermore, historically, we have that the months with the best sales are:')
+    print('\nFurthermore, historically, we have that the months with the best sales are:')
     print_time(dict(best_months), 'Month', 'Sales within that month')
-    print('While the months with the worst sales are:')
+    print('\nWhile the months with the worst sales are:')
     print_time(dict(worst_months), 'Month', 'Sales within that month')
     
 def get_top_worst_products(product_attribute_index, list_to_search) -> List:
@@ -155,18 +154,26 @@ def get_anual_income() -> List:
     return sales_per_year
 
 def print_products(given_list, analyzed_attribute) -> None:
+    product_count = 1
     for product in given_list:
-        print(f"""
-        Product: {lifestore_products[(product[0] - 1)][1]},
-        Price: {lifestore_products[(product[0] - 1)][2]},
-        Category: {lifestore_products[(product[0] - 1)][3]},
-        Current stock: {lifestore_products[(product[0] - 1)][4]},
-        {analyzed_attribute}: {product[1]}
-        """)
+        if product_count > 1 and product_count < (len(given_list) + 1): 
+            print("-----------------------------------------------------------------------")
+
+        print(f"""{product_count}
+        Product: {(str(lifestore_products[(product[0] - 1)][1])).split(", ")[0]}
+        Price: ${lifestore_products[(product[0] - 1)][2]}
+        Category: {lifestore_products[(product[0] - 1)][3]}
+        Current stock: {lifestore_products[(product[0] - 1)][4]}
+        {analyzed_attribute}: {product[1]}""")
+        
+        product_count += 1
 
 def print_time(given_dict, time_attribute, sale_attribute) -> None:
+    counter = 0
     for date, sales in given_dict.items():
-        print(f'''
-        {time_attribute}: {date},
-        {sale_attribute}: {sales}
-        ''')
+        if counter > 0 and counter < len(given_dict):
+            print("       -------------------------------")
+        print(f'''        {time_attribute}: {date}
+        {sale_attribute}: {sales}''')
+
+        counter += 1

@@ -21,19 +21,19 @@ def admin_screen(username: str):
         
         if selected_option == 1:
             show_sales_searches_analysis()
-            selected_option = int(input("Select [-1, 1, 2, 3]: "))
+            selected_option = int(input("\nSelect [-1, 1, 2, 3]: "))
 
         elif selected_option == 2:
             show_reviews_analysis()
-            selected_option = int(input("Select [-1, 1, 2, 3]: "))
+            selected_option = int(input("\nSelect [-1, 1, 2, 3]: "))
         
         elif selected_option == 3:
             show_income()
-            selected_option = int(input("Select [-1, 1, 2, 3]: "))
+            selected_option = int(input("\nSelect [-1, 1, 2, 3]: "))
         
         else: 
             print("You typed an invalid option!")
-            selected_option = int(input("Select [-1, 1, 2, 3]: "))
+            selected_option = int(input("\nSelect [-1, 1, 2, 3]: "))
 
 
 def normal_user_screen(username: str):
@@ -43,22 +43,22 @@ def normal_user_screen(username: str):
     while selected_option > 0:
         
         if selected_option == 1:
-            product_name = input("Write the product's name: ")
+            product_name = input("Write the product's name (use until the ',' from the lifestore_products list): ")
             show_specified_product(product_name)
-            selected_option = int(input("Select [-1, 1, 2, 3]: "))
+            selected_option = int(input("\nSelect [-1, 1, 2, 3]: "))
 
         elif selected_option == 2:
             category = input("Write the category you would like to see: ")
             show_category_products(category)
-            selected_option = int(input("Select [-1, 1, 2, 3]: "))
+            selected_option = int(input("\nSelect [-1, 1, 2, 3]: "))
         
         elif selected_option == 3:
             show_products()
-            selected_option = int(input("Select [-1, 1, 2, 3]: "))
+            selected_option = int(input("\nSelect [-1, 1, 2, 3]: "))
         
         else: 
             print("You typed an invalid option!")
-            selected_option = int(input("Select [-1, 1, 2, 3]: "))
+            selected_option = int(input("\nSelect [-1, 1, 2, 3]: "))
 
 def main_screen() -> None:
     print_main_menu()

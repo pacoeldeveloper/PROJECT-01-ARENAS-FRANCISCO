@@ -1,7 +1,7 @@
 '''
 Author: Francisco Arenas
 Creation Date: August 24th, 2021
-Last Modfication Date: September 7th, 2021
+Last Modfication Date: September 12th, 2021
 
 Main file for the Lifestore case study. For more information, 
 consult the README.md file in my github account: @farenasencis

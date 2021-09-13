@@ -1,7 +1,7 @@
 '''
 Author: Francisco Arenas
 Creation Date: August 25th, 2021
-Last Modfication Date: September 7th, 2021
+Last Modfication Date: September 12th, 2021
 
 File with all art printing-related operations.
 '''

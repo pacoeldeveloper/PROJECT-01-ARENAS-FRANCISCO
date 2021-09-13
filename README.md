@@ -14,6 +14,7 @@ https://quick-iridium-b07.notion.site/Lifestore-case-study-434ce5b6f5564ecebfba7
 
 ## Images (preview)
 Main Menu:
+\n
 ![SS_1](https://user-images.githubusercontent.com/60563317/133016854-a578b899-5657-43f5-a9ce-8cf0f11ae099.png)
 
 
